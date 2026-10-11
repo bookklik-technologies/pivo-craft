@@ -1,0 +1,42 @@
+{
+  "browser": "141.0.7390.37",
+  "tests": [
+    {
+      "name": "dark panels use slim rounded custom scrollbar",
+      "passed": true
+    },
+    {
+      "name": "panel has real native scroll range",
+      "passed": true
+    },
+    {
+      "name": "mouse wheel still scrolls native panels",
+      "passed": true
+    },
+    {
+      "name": "scrollbar colors adapt to light theme",
+      "passed": true
+    },
+    {
+      "name": "thumb width stays unchanged across themes",
+      "passed": true
+    },
+    {
+      "name": "shortcut dialog uses the same custom scrollbar",
+      "passed": true
+    },
+    {
+      "name": "shortcut list remains scrollable",
+      "passed": true
+    },
+    {
+      "name": "horizontal scrollers share the styling",
+      "passed": true
+    },
+    {
+      "name": "no scrollbar runtime errors",
+      "passed": true
+    }
+  ],
+  "errors": []
+}

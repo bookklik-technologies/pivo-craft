@@ -1,0 +1,31 @@
+{
+  "name": "pivo-craft",
+  "version": "0.5.6",
+  "license": "MIT",
+  "author": "a-hakim",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.30.3",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "tsc --noEmit && vite build",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:browser": "node scripts/browser/browser-smoke.mjs && node scripts/browser/browser-m4.mjs && node scripts/browser/browser-refinements.mjs && node scripts/browser/browser-codecs.mjs && node scripts/browser/browser-workspace.mjs && node scripts/browser/browser-density.mjs && node scripts/browser/browser-font.mjs && node scripts/browser/browser-icons.mjs && node scripts/browser/browser-scrollbars.mjs && node scripts/browser/browser-theme.mjs && node scripts/browser/browser-typography.mjs",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@fontsource-variable/outfit": "5.3.0",
+    "fflate": "0.8.2",
+    "gifenc": "1.0.3",
+    "lucide": "1.54.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.56.1",
+    "@types/node": "^24.19.1",
+    "@vitest/coverage-v8": "3.2.4",
+    "typescript": "5.9.3",
+    "vite": "6.4.1",
+    "vitest": "3.2.4"
+  }
+}

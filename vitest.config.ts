@@ -1,0 +1,2 @@
+import {defineConfig} from 'vitest/config';
+export default defineConfig({resolve:{alias:{'@pivo-craft/core':new URL('./packages/core/src/index.ts',import.meta.url).pathname}},test:{include:['packages/**/*.test.ts'],coverage:{provider:'v8',include:['packages/core/src/**/*.ts','packages/codecs/src/**/*.ts','packages/workspace/src/**/*.ts'],exclude:['**/types.ts','**/index.ts'],reporter:['text','json-summary']}}});

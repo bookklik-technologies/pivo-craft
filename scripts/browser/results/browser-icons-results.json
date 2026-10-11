@@ -1,0 +1,38 @@
+{
+  "browser": "141.0.7390.37",
+  "tests": [
+    {
+      "name": "all drawing tools use visible Lucide SVG icons",
+      "passed": true
+    },
+    {
+      "name": "eyedropper no longer depends on a missing font glyph",
+      "passed": true
+    },
+    {
+      "name": "dock and document-close icons are SVGs",
+      "passed": true
+    },
+    {
+      "name": "playback switches to Lucide stop icon",
+      "passed": true
+    },
+    {
+      "name": "playback switches back to Lucide play icon",
+      "passed": true
+    },
+    {
+      "name": "layer lock state updates SVG",
+      "passed": true
+    },
+    {
+      "name": "visibility state updates SVG",
+      "passed": true
+    },
+    {
+      "name": "no icon runtime errors",
+      "passed": true
+    }
+  ],
+  "errors": []
+}

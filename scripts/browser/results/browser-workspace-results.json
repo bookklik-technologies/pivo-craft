@@ -1,0 +1,106 @@
+{
+  "browser": "141.0.7390.37",
+  "tests": [
+    {
+      "name": "creating a new document keeps the previous tab",
+      "passed": true
+    },
+    {
+      "name": "new document starts independently blank",
+      "passed": true
+    },
+    {
+      "name": "switch restores artwork and view zoom",
+      "passed": true
+    },
+    {
+      "name": "undo is document scoped",
+      "passed": true
+    },
+    {
+      "name": "other document remains blank after first-document undo/redo",
+      "passed": true
+    },
+    {
+      "name": "explicit clipboard paste can copy between compatible documents",
+      "passed": true
+    },
+    {
+      "name": "cross-document paste undo only affects the destination",
+      "passed": true
+    },
+    {
+      "name": "recovery checkpoints use independent document slots",
+      "passed": true
+    },
+    {
+      "name": "dirty close requires consent",
+      "passed": true
+    },
+    {
+      "name": "confirmed dirty close removes only chosen tab",
+      "passed": true
+    },
+    {
+      "name": "layers panel moves to the actual left dock",
+      "passed": true
+    },
+    {
+      "name": "panel heading drag moves real DOM between docks",
+      "passed": true
+    },
+    {
+      "name": "pointer resize changes dock width",
+      "passed": true
+    },
+    {
+      "name": "timeline docks to side and size updates",
+      "passed": true
+    },
+    {
+      "name": "old pencil shortcut is unbound",
+      "passed": true
+    },
+    {
+      "name": "remapped pencil shortcut invokes tool",
+      "passed": true
+    },
+    {
+      "name": "shortcut conflict blocks mutation and leaves dialog open",
+      "passed": true
+    },
+    {
+      "name": "reserved focus key is rejected",
+      "passed": true
+    },
+    {
+      "name": "typing does not execute tool shortcuts",
+      "passed": true
+    },
+    {
+      "name": "portable key map contains remapped chord",
+      "passed": true
+    },
+    {
+      "name": "reset restores default bindings",
+      "passed": true
+    },
+    {
+      "name": "shortcut import restores the exported map",
+      "passed": true
+    },
+    {
+      "name": "saved docking layout restores real panel/timeline locations",
+      "passed": true
+    },
+    {
+      "name": "shortcut map persists across reload",
+      "passed": true
+    },
+    {
+      "name": "no runtime/console errors",
+      "passed": true
+    }
+  ],
+  "errors": []
+}

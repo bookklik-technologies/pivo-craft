@@ -1,0 +1,86 @@
+{
+  "browser": "141.0.7390.37",
+  "tests": [
+    {
+      "name": "topbar controls stay within 1024px",
+      "passed": true
+    },
+    {
+      "name": "panel controls do not overflow horizontally at 1024px",
+      "passed": true
+    },
+    {
+      "name": "tool buttons are consistent at 1024px",
+      "passed": true
+    },
+    {
+      "name": "labelled buttons remain single-line at 1024px",
+      "passed": true
+    },
+    {
+      "name": "topbar controls stay within 1280px",
+      "passed": true
+    },
+    {
+      "name": "panel controls do not overflow horizontally at 1280px",
+      "passed": true
+    },
+    {
+      "name": "tool buttons are consistent at 1280px",
+      "passed": true
+    },
+    {
+      "name": "labelled buttons remain single-line at 1280px",
+      "passed": true
+    },
+    {
+      "name": "topbar controls stay within 1440px",
+      "passed": true
+    },
+    {
+      "name": "panel controls do not overflow horizontally at 1440px",
+      "passed": true
+    },
+    {
+      "name": "tool buttons are consistent at 1440px",
+      "passed": true
+    },
+    {
+      "name": "labelled buttons remain single-line at 1440px",
+      "passed": true
+    },
+    {
+      "name": "side-docked viewport retains usable width",
+      "passed": true
+    },
+    {
+      "name": "side timeline buttons remain within the panel",
+      "passed": true
+    },
+    {
+      "name": "minimum-width dock controls remain contained",
+      "passed": true
+    },
+    {
+      "name": "topbar controls stay within 1920px",
+      "passed": true
+    },
+    {
+      "name": "panel controls do not overflow horizontally at 1920px",
+      "passed": true
+    },
+    {
+      "name": "tool buttons are consistent at 1920px",
+      "passed": true
+    },
+    {
+      "name": "labelled buttons remain single-line at 1920px",
+      "passed": true
+    },
+    {
+      "name": "no density/layout runtime errors",
+      "passed": true
+    }
+  ],
+  "errors": []
+}

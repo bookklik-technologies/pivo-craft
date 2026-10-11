@@ -1,0 +1,111 @@
+{
+  "browser": "141.0.7390.37",
+  "input": "CDP simulated pen; no physical hardware test",
+  "tests": [
+    {
+      "name": "text previews do not mutate live project",
+      "passed": true
+    },
+    {
+      "name": "text Escape cancels",
+      "passed": true
+    },
+    {
+      "name": "text apply produces raster glyphs",
+      "passed": true
+    },
+    {
+      "name": "pixel-art text uses binary alpha",
+      "passed": true
+    },
+    {
+      "name": "one-step text undo",
+      "passed": true
+    },
+    {
+      "name": "text redo restores exact pixels",
+      "passed": true
+    },
+    {
+      "name": "adjustment preview does not mutate source",
+      "passed": true
+    },
+    {
+      "name": "adjustment cancel leaves source exact",
+      "passed": true
+    },
+    {
+      "name": "adjustment applies colors",
+      "passed": true
+    },
+    {
+      "name": "adjustment one-step undo",
+      "passed": true
+    },
+    {
+      "name": "invalid curve blocks Apply",
+      "passed": true
+    },
+    {
+      "name": "transform preview leaves source exact",
+      "passed": true
+    },
+    {
+      "name": "transform Escape cancels",
+      "passed": true
+    },
+    {
+      "name": "arbitrary transform applies",
+      "passed": true
+    },
+    {
+      "name": "transform one-step undo",
+      "passed": true
+    },
+    {
+      "name": "selection transform undo restores source mask",
+      "passed": true
+    },
+    {
+      "name": "captured brush added to preset list",
+      "passed": true
+    },
+    {
+      "name": "custom brush stamps captured pixels",
+      "passed": true
+    },
+    {
+      "name": "portable brush has original dimensions",
+      "passed": true
+    },
+    {
+      "name": "brush import restores preset",
+      "passed": true
+    },
+    {
+      "name": "dynamics controls active",
+      "passed": true
+    },
+    {
+      "name": "simulated pen stroke commits",
+      "passed": true
+    },
+    {
+      "name": "advanced artwork save/reopen exact",
+      "passed": true
+    },
+    {
+      "name": "brush preset persists after reload",
+      "passed": true
+    },
+    {
+      "name": "dynamics settings persist after reload",
+      "passed": true
+    },
+    {
+      "name": "advanced UI has no console or runtime errors",
+      "passed": true
+    }
+  ],
+  "errors": []
+}

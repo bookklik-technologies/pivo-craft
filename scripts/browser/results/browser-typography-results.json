@@ -1,0 +1,30 @@
+{
+  "browser": "141.0.7390.37",
+  "tests": [
+    {
+      "name": "headings use Outfit semibold with restrained tracking",
+      "passed": true
+    },
+    {
+      "name": "compact controls use medium weight and balanced size",
+      "passed": true
+    },
+    {
+      "name": "status text is readable with tabular numbers",
+      "passed": true
+    },
+    {
+      "name": "dialogs have a distinct title hierarchy",
+      "passed": true
+    },
+    {
+      "name": "theme switching does not change type metrics",
+      "passed": true
+    },
+    {
+      "name": "no typography runtime errors",
+      "passed": true
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,74 @@
+{
+  "browser": "141.0.7390.37",
+  "tests": [
+    {
+      "name": "initial sample loads four frames",
+      "passed": true
+    },
+    {
+      "name": "new project uses transparent image layer",
+      "passed": true
+    },
+    {
+      "name": "pointer draws stroke",
+      "passed": true
+    },
+    {
+      "name": "undo returns exact transparent artwork",
+      "passed": true
+    },
+    {
+      "name": "redo restores stroke",
+      "passed": true
+    },
+    {
+      "name": "frame copy",
+      "passed": true
+    },
+    {
+      "name": "linked cels share content",
+      "passed": true
+    },
+    {
+      "name": "unlink isolates content",
+      "passed": true
+    },
+    {
+      "name": "native save and reopen",
+      "passed": true
+    },
+    {
+      "name": "export png",
+      "passed": true
+    },
+    {
+      "name": "export gif",
+      "passed": true
+    },
+    {
+      "name": "export ase",
+      "passed": true
+    },
+    {
+      "name": "export sheet",
+      "passed": true
+    },
+    {
+      "name": "tilemap creation",
+      "passed": true
+    },
+    {
+      "name": "tile placement changes tile grid",
+      "passed": true
+    },
+    {
+      "name": "native preserves tile pixels",
+      "passed": true
+    },
+    {
+      "name": "no runtime or console errors",
+      "passed": true
+    }
+  ],
+  "errors": []
+}

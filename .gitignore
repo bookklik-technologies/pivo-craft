@@ -1,0 +1,13 @@
+node_modules/
+dist/
+coverage/
+*.log
+browser-export-*.bin
+browser-project.pvc
+browser-tile.pvc
+browser-codec-*
+browser-m4-project.pvc
+browser-pattern.pxbrush
+browser-custom.pxbrush
+browser-shortcuts.pxkeys
+screenshot-*.png

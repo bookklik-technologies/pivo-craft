@@ -1,0 +1,33 @@
+{
+  "browser": "141.0.7390.37",
+  "tests": [
+    {
+      "name": "Outfit variable font is actually loaded",
+      "passed": true
+    },
+    {
+      "name": "UI labels and inputs inherit Outfit",
+      "passed": true
+    },
+    {
+      "name": "font files are served locally",
+      "passed": true
+    },
+    {
+      "name": "variable font supports main UI weights",
+      "passed": true
+    },
+    {
+      "name": "theme switching keeps Outfit and artwork",
+      "passed": true
+    },
+    {
+      "name": "no font runtime errors",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "fontRequests": [
+    "http://localhost:5173/@fs/C:/wamp64/www/pivo-projects/pivo-craft/node_modules/@fontsource-variable/outfit/files/outfit-latin-wght-normal.woff2"
+  ]
+}

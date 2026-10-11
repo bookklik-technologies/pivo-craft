@@ -1,0 +1,28 @@
+import {chromium} from 'playwright';
+import fs from 'node:fs';import {fileURLToPath} from 'node:url';const OUT=fileURLToPath(new URL('results/',import.meta.url));fs.mkdirSync(OUT,{recursive:true});
+const browser=await chromium.launch({headless:true,args:['--no-sandbox']});
+const page=await browser.newPage({viewport:{width:1440,height:1000},deviceScaleFactor:1});
+const errors=[];page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});page.on('dialog',d=>d.accept());
+const tests=[];const check=(name,ok)=>{tests.push({name,passed:!!ok});if(!ok)throw new Error(name);};
+await page.goto('http://localhost:5173',{waitUntil:'networkidle'});
+await page.waitForFunction(()=>!!window.pivoCraft);
+check('initial sample loads four frames',await page.evaluate(()=>window.pivoCraft.snapshot().frames.length===4));
+await page.screenshot({path:'screenshot-editor.png',fullPage:true});
+await page.getByRole('button',{name:'New',exact:true}).click();await page.locator('[name=name]').fill('Browser test');await page.locator('[name=width]').fill('8');await page.locator('[name=height]').fill('8');await page.getByRole('button',{name:'Create',exact:true}).click();
+check('new project uses transparent image layer',await page.evaluate(()=>{const p=window.pivoCraft.snapshot();return p.width===8&&!p.layers[0].background&&window.pivoCraft.render().every(v=>v===0);}));
+let box=await page.locator('#viewport').boundingBox();const pixel=(x,y)=>({x:box.x+box.width/2-96+(x+.5)*24,y:box.y+box.height/2-96+(y+.5)*24});
+let a=pixel(1,1),b=pixel(5,5);await page.mouse.move(a.x,a.y);await page.mouse.down();await page.mouse.move(b.x,b.y,{steps:8});await page.mouse.up();
+check('pointer draws stroke',await page.evaluate(()=>window.pivoCraft.render().some(v=>v>0)));
+await page.keyboard.press('Control+z');check('undo returns exact transparent artwork',await page.evaluate(()=>window.pivoCraft.render().every(v=>v===0)));await page.keyboard.press('Control+Shift+z');
+check('redo restores stroke',await page.evaluate(()=>window.pivoCraft.render().some(v=>v>0)));
+await page.getByRole('button',{name:'+ Frame',exact:true}).click();check('frame copy',await page.evaluate(()=>window.pivoCraft.snapshot().frames.length===2));
+await page.getByRole('button',{name:'Link previous',exact:true}).click();check('linked cels share content',await page.evaluate(()=>{const p=window.pivoCraft.snapshot();return p.cels[0].imageId===p.cels[1].imageId;}));
+await page.getByRole('button',{name:'Unlink',exact:true}).click();check('unlink isolates content',await page.evaluate(()=>{const p=window.pivoCraft.snapshot();return p.cels[0].imageId!==p.cels[1].imageId;}));
+const saved=page.waitForEvent('download');await page.getByRole('button',{name:'Save project',exact:true}).click();await (await saved).saveAs('browser-project.pvc');
+await page.locator('#open-file').setInputFiles('browser-project.pvc');check('native save and reopen',await page.evaluate(()=>{const p=window.pivoCraft.snapshot();return p.width===8&&p.frames.length===2;}));
+for(const format of ['png','gif','ase','sheet']){await page.getByRole('button',{name:'Export',exact:true}).click();await page.locator('[name=format]').selectOption(format);const dl=page.waitForEvent('download');await page.locator('#modal-form button[type=submit]').click();const d=await dl;await d.saveAs('browser-export-'+format+'.bin');check('export '+format,fs.statSync('browser-export-'+format+'.bin').size>0);}
+await page.getByRole('button',{name:'Create 8×8 tile layer',exact:true}).click();check('tilemap creation',await page.evaluate(()=>window.pivoCraft.snapshot().tilesets.length===1));
+a=pixel(2,2);await page.mouse.click(a.x,a.y);check('tile placement changes tile grid',await page.evaluate(()=>window.pivoCraft.snapshot().tilemaps[0].cells[0].tile===1));
+const savedTile=page.waitForEvent('download');await page.getByRole('button',{name:'Save project',exact:true}).click();await(await savedTile).saveAs('browser-tile.pvc');await page.locator('#open-file').setInputFiles('browser-tile.pvc');check('native preserves tile pixels',await page.evaluate(()=>{const p=window.pivoCraft.snapshot();return p.tilesets.length===1&&p.tilesets[0].tiles[1].data instanceof Uint8Array&&p.tilesets[0].tiles[1].data.some(v=>v>0);}));
+check('no runtime or console errors',errors.length===0);
+fs.writeFileSync(OUT+'browser-results.json',JSON.stringify({browser:await browser.version(),tests,errors},null,2));console.log(JSON.stringify({tests,errors},null,2));await browser.close();

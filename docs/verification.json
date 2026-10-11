@@ -1,0 +1,761 @@
+{
+  "version": "0.5.6",
+  "date": "2026-10-10",
+  "build": "TypeScript noEmit and Vite production build passed",
+  "unit_integration_tests": {
+    "passed": 254,
+    "failed": 0,
+    "files": 20
+  },
+  "browser": {
+    "browser": "141.0.7390.37",
+    "tests": [
+      {
+        "name": "initial sample loads four frames",
+        "passed": true
+      },
+      {
+        "name": "new project uses transparent image layer",
+        "passed": true
+      },
+      {
+        "name": "pointer draws stroke",
+        "passed": true
+      },
+      {
+        "name": "undo returns exact transparent artwork",
+        "passed": true
+      },
+      {
+        "name": "redo restores stroke",
+        "passed": true
+      },
+      {
+        "name": "frame copy",
+        "passed": true
+      },
+      {
+        "name": "linked cels share content",
+        "passed": true
+      },
+      {
+        "name": "unlink isolates content",
+        "passed": true
+      },
+      {
+        "name": "native save and reopen",
+        "passed": true
+      },
+      {
+        "name": "export png",
+        "passed": true
+      },
+      {
+        "name": "export gif",
+        "passed": true
+      },
+      {
+        "name": "export ase",
+        "passed": true
+      },
+      {
+        "name": "export sheet",
+        "passed": true
+      },
+      {
+        "name": "tilemap creation",
+        "passed": true
+      },
+      {
+        "name": "tile placement changes tile grid",
+        "passed": true
+      },
+      {
+        "name": "native preserves tile pixels",
+        "passed": true
+      },
+      {
+        "name": "no runtime or console errors",
+        "passed": true
+      }
+    ],
+    "errors": []
+  },
+  "advanced_browser": {
+    "browser": "141.0.7390.37",
+    "input": "CDP simulated pen; no physical hardware test",
+    "tests": [
+      {
+        "name": "text previews do not mutate live project",
+        "passed": true
+      },
+      {
+        "name": "text Escape cancels",
+        "passed": true
+      },
+      {
+        "name": "text apply produces raster glyphs",
+        "passed": true
+      },
+      {
+        "name": "pixel-art text uses binary alpha",
+        "passed": true
+      },
+      {
+        "name": "one-step text undo",
+        "passed": true
+      },
+      {
+        "name": "text redo restores exact pixels",
+        "passed": true
+      },
+      {
+        "name": "adjustment preview does not mutate source",
+        "passed": true
+      },
+      {
+        "name": "adjustment cancel leaves source exact",
+        "passed": true
+      },
+      {
+        "name": "adjustment applies colors",
+        "passed": true
+      },
+      {
+        "name": "adjustment one-step undo",
+        "passed": true
+      },
+      {
+        "name": "invalid curve blocks Apply",
+        "passed": true
+      },
+      {
+        "name": "transform preview leaves source exact",
+        "passed": true
+      },
+      {
+        "name": "transform Escape cancels",
+        "passed": true
+      },
+      {
+        "name": "arbitrary transform applies",
+        "passed": true
+      },
+      {
+        "name": "transform one-step undo",
+        "passed": true
+      },
+      {
+        "name": "selection transform undo restores source mask",
+        "passed": true
+      },
+      {
+        "name": "captured brush added to preset list",
+        "passed": true
+      },
+      {
+        "name": "custom brush stamps captured pixels",
+        "passed": true
+      },
+      {
+        "name": "portable brush has original dimensions",
+        "passed": true
+      },
+      {
+        "name": "brush import restores preset",
+        "passed": true
+      },
+      {
+        "name": "dynamics controls active",
+        "passed": true
+      },
+      {
+        "name": "simulated pen stroke commits",
+        "passed": true
+      },
+      {
+        "name": "advanced artwork save/reopen exact",
+        "passed": true
+      },
+      {
+        "name": "local font loads without external network",
+        "passed": true
+      },
+      {
+        "name": "brush preset persists after reload",
+        "passed": true
+      },
+      {
+        "name": "dynamics settings persist after reload",
+        "passed": true
+      },
+      {
+        "name": "advanced UI has no console or runtime errors",
+        "passed": true
+      }
+    ],
+    "errors": []
+  },
+  "refinement_browser": {
+    "browser": "141.0.7390.37",
+    "input": "CDP simulated pen only",
+    "tests": [
+      {
+        "name": "source pattern phase follows captured canvas origin",
+        "passed": true
+      },
+      {
+        "name": "destination pattern phase starts at each stroke",
+        "passed": true
+      },
+      {
+        "name": "alignment and capture origin survive brush export",
+        "passed": true
+      },
+      {
+        "name": "gradient sensor can be independent of size/opacity sensor",
+        "passed": true
+      },
+      {
+        "name": "simulated pressure drives visible ramp colors",
+        "passed": true
+      },
+      {
+        "name": "pixel-vote preview leaves committed artwork unchanged",
+        "passed": true
+      },
+      {
+        "name": "pixel-vote Escape cancels",
+        "passed": true
+      },
+      {
+        "name": "pixel-vote Apply transforms artwork",
+        "passed": true
+      },
+      {
+        "name": "pixel-vote transform undoes exactly",
+        "passed": true
+      },
+      {
+        "name": "pattern mode reloads in preset data",
+        "passed": true
+      },
+      {
+        "name": "gradient dynamics reload",
+        "passed": true
+      },
+      {
+        "name": "no runtime or console errors",
+        "passed": true
+      }
+    ],
+    "errors": []
+  },
+  "codec_browser": {
+    "browser": "141.0.7390.37",
+    "tests": [
+      {
+        "name": "PNG UI import indexed-transparent.png",
+        "passed": true
+      },
+      {
+        "name": "PNG UI import gray-onebit.png",
+        "passed": true
+      },
+      {
+        "name": "PNG UI import gray-fourbit.png",
+        "passed": true
+      },
+      {
+        "name": "PNG UI import rgb16-transparent.png",
+        "passed": true
+      },
+      {
+        "name": "PNG UI import adam7-rgba.png",
+        "passed": true
+      },
+      {
+        "name": "GIF import preserves frame timing and repeat tag",
+        "passed": true
+      },
+      {
+        "name": "GIF export generated bytes",
+        "passed": true
+      },
+      {
+        "name": "GIF-derived native project retains frames/tags",
+        "passed": true
+      },
+      {
+        "name": "legacy ASE empty sentinel and base index normalized",
+        "passed": true
+      },
+      {
+        "name": "legacy tilemap renders correct red/empty pixels",
+        "passed": true
+      },
+      {
+        "name": "tilemap ASE export/reimport stable",
+        "passed": true
+      },
+      {
+        "name": "bad import leaves current project intact",
+        "passed": true
+      },
+      {
+        "name": "codec browser checks have no runtime/console errors",
+        "passed": true
+      }
+    ],
+    "errors": []
+  },
+  "workspace_browser": {
+    "browser": "141.0.7390.37",
+    "tests": [
+      {
+        "name": "creating a new document keeps the previous tab",
+        "passed": true
+      },
+      {
+        "name": "new document starts independently blank",
+        "passed": true
+      },
+      {
+        "name": "switch restores artwork and view zoom",
+        "passed": true
+      },
+      {
+        "name": "undo is document scoped",
+        "passed": true
+      },
+      {
+        "name": "other document remains blank after first-document undo/redo",
+        "passed": true
+      },
+      {
+        "name": "explicit clipboard paste can copy between compatible documents",
+        "passed": true
+      },
+      {
+        "name": "cross-document paste undo only affects the destination",
+        "passed": true
+      },
+      {
+        "name": "recovery checkpoints use independent document slots",
+        "passed": true
+      },
+      {
+        "name": "dirty close requires consent",
+        "passed": true
+      },
+      {
+        "name": "confirmed dirty close removes only chosen tab",
+        "passed": true
+      },
+      {
+        "name": "layers panel moves to the actual left dock",
+        "passed": true
+      },
+      {
+        "name": "panel heading drag moves real DOM between docks",
+        "passed": true
+      },
+      {
+        "name": "pointer resize changes dock width",
+        "passed": true
+      },
+      {
+        "name": "timeline docks to side and size updates",
+        "passed": true
+      },
+      {
+        "name": "old pencil shortcut is unbound",
+        "passed": true
+      },
+      {
+        "name": "remapped pencil shortcut invokes tool",
+        "passed": true
+      },
+      {
+        "name": "shortcut conflict blocks mutation and leaves dialog open",
+        "passed": true
+      },
+      {
+        "name": "reserved focus key is rejected",
+        "passed": true
+      },
+      {
+        "name": "typing does not execute tool shortcuts",
+        "passed": true
+      },
+      {
+        "name": "portable key map contains remapped chord",
+        "passed": true
+      },
+      {
+        "name": "reset restores default bindings",
+        "passed": true
+      },
+      {
+        "name": "shortcut import restores the exported map",
+        "passed": true
+      },
+      {
+        "name": "saved docking layout restores real panel/timeline locations",
+        "passed": true
+      },
+      {
+        "name": "shortcut map persists across reload",
+        "passed": true
+      },
+      {
+        "name": "no runtime/console errors",
+        "passed": true
+      }
+    ],
+    "errors": []
+  },
+  "icon_browser": {
+    "browser": "141.0.7390.37",
+    "tests": [
+      {
+        "name": "all drawing tools use visible Lucide SVG icons",
+        "passed": true
+      },
+      {
+        "name": "eyedropper no longer depends on a missing font glyph",
+        "passed": true
+      },
+      {
+        "name": "dock and document-close icons are SVGs",
+        "passed": true
+      },
+      {
+        "name": "playback switches to Lucide stop icon",
+        "passed": true
+      },
+      {
+        "name": "playback switches back to Lucide play icon",
+        "passed": true
+      },
+      {
+        "name": "layer lock state updates SVG",
+        "passed": true
+      },
+      {
+        "name": "visibility state updates SVG",
+        "passed": true
+      },
+      {
+        "name": "no icon runtime errors",
+        "passed": true
+      }
+    ],
+    "errors": []
+  },
+  "density_browser": {
+    "browser": "141.0.7390.37",
+    "tests": [
+      {
+        "name": "topbar controls stay within 1024px",
+        "passed": true
+      },
+      {
+        "name": "panel controls do not overflow horizontally at 1024px",
+        "passed": true
+      },
+      {
+        "name": "tool buttons are consistent at 1024px",
+        "passed": true
+      },
+      {
+        "name": "labelled buttons remain single-line at 1024px",
+        "passed": true
+      },
+      {
+        "name": "topbar controls stay within 1280px",
+        "passed": true
+      },
+      {
+        "name": "panel controls do not overflow horizontally at 1280px",
+        "passed": true
+      },
+      {
+        "name": "tool buttons are consistent at 1280px",
+        "passed": true
+      },
+      {
+        "name": "labelled buttons remain single-line at 1280px",
+        "passed": true
+      },
+      {
+        "name": "topbar controls stay within 1440px",
+        "passed": true
+      },
+      {
+        "name": "panel controls do not overflow horizontally at 1440px",
+        "passed": true
+      },
+      {
+        "name": "tool buttons are consistent at 1440px",
+        "passed": true
+      },
+      {
+        "name": "labelled buttons remain single-line at 1440px",
+        "passed": true
+      },
+      {
+        "name": "side-docked viewport retains usable width",
+        "passed": true
+      },
+      {
+        "name": "side timeline buttons remain within the panel",
+        "passed": true
+      },
+      {
+        "name": "minimum-width dock controls remain contained",
+        "passed": true
+      },
+      {
+        "name": "topbar controls stay within 1920px",
+        "passed": true
+      },
+      {
+        "name": "panel controls do not overflow horizontally at 1920px",
+        "passed": true
+      },
+      {
+        "name": "tool buttons are consistent at 1920px",
+        "passed": true
+      },
+      {
+        "name": "labelled buttons remain single-line at 1920px",
+        "passed": true
+      },
+      {
+        "name": "no density/layout runtime errors",
+        "passed": true
+      }
+    ],
+    "errors": []
+  },
+  "theme_browser": {
+    "browser": "141.0.7390.37",
+    "tests": [
+      {
+        "name": "initial theme follows OS when no preference exists",
+        "passed": true
+      },
+      {
+        "name": "unspecified theme responds to OS changes",
+        "passed": true
+      },
+      {
+        "name": "dark toggle uses Lucide sun for its next action",
+        "passed": true
+      },
+      {
+        "name": "light toggle uses Lucide moon",
+        "passed": true
+      },
+      {
+        "name": "theme does not change artwork pixels or revision",
+        "passed": true
+      },
+      {
+        "name": "Lucide/tool dimensions remain identical",
+        "passed": true
+      },
+      {
+        "name": "light chrome switches native color scheme and readable text colors",
+        "passed": true
+      },
+      {
+        "name": "explicit light preference ignores OS changes",
+        "passed": true
+      },
+      {
+        "name": "explicit theme persists after reload",
+        "passed": true
+      },
+      {
+        "name": "light topbar remains contained at 1024px",
+        "passed": true
+      },
+      {
+        "name": "light topbar remains contained at 1280px",
+        "passed": true
+      },
+      {
+        "name": "light topbar remains contained at 1440px",
+        "passed": true
+      },
+      {
+        "name": "light topbar remains contained at 1920px",
+        "passed": true
+      },
+      {
+        "name": "dark preference also persists",
+        "passed": true
+      },
+      {
+        "name": "no theme runtime errors",
+        "passed": true
+      }
+    ],
+    "errors": []
+  },
+  "scrollbar_browser": {
+    "browser": "141.0.7390.37",
+    "tests": [
+      {
+        "name": "dark panels use slim rounded custom scrollbar",
+        "passed": true
+      },
+      {
+        "name": "panel has real native scroll range",
+        "passed": true
+      },
+      {
+        "name": "mouse wheel still scrolls native panels",
+        "passed": true
+      },
+      {
+        "name": "scrollbar colors adapt to light theme",
+        "passed": true
+      },
+      {
+        "name": "thumb width stays unchanged across themes",
+        "passed": true
+      },
+      {
+        "name": "shortcut dialog uses the same custom scrollbar",
+        "passed": true
+      },
+      {
+        "name": "shortcut list remains scrollable",
+        "passed": true
+      },
+      {
+        "name": "horizontal scrollers share the styling",
+        "passed": true
+      },
+      {
+        "name": "no scrollbar runtime errors",
+        "passed": true
+      }
+    ],
+    "errors": []
+  },
+  "font_browser": {
+    "browser": "141.0.7390.37",
+    "tests": [
+      {
+        "name": "Outfit variable font is actually loaded",
+        "passed": true
+      },
+      {
+        "name": "UI labels and inputs inherit Outfit",
+        "passed": true
+      },
+      {
+        "name": "font files are served locally",
+        "passed": true
+      },
+      {
+        "name": "variable font supports main UI weights",
+        "passed": true
+      },
+      {
+        "name": "theme switching keeps Outfit and artwork",
+        "passed": true
+      },
+      {
+        "name": "no font runtime errors",
+        "passed": true
+      }
+    ],
+    "errors": [],
+    "fontRequests": [
+      "http://localhost:5173/@fs/workspace/pivo-craft/node_modules/@fontsource-variable/outfit/files/outfit-latin-wght-normal.woff2"
+    ]
+  },
+  "typography_browser": {
+    "browser": "141.0.7390.37",
+    "tests": [
+      {
+        "name": "headings use Outfit semibold with restrained tracking",
+        "passed": true
+      },
+      {
+        "name": "compact controls use medium weight and balanced size",
+        "passed": true
+      },
+      {
+        "name": "status text is readable with tabular numbers",
+        "passed": true
+      },
+      {
+        "name": "dialogs have a distinct title hierarchy",
+        "passed": true
+      },
+      {
+        "name": "theme switching does not change type metrics",
+        "passed": true
+      },
+      {
+        "name": "no typography runtime errors",
+        "passed": true
+      }
+    ],
+    "errors": []
+  },
+  "coverage": {
+    "lines": {
+      "total": 4582,
+      "covered": 3708,
+      "skipped": 0,
+      "pct": 80.92
+    },
+    "statements": {
+      "total": 4582,
+      "covered": 3708,
+      "skipped": 0,
+      "pct": 80.92
+    },
+    "functions": {
+      "total": 310,
+      "covered": 245,
+      "skipped": 0,
+      "pct": 79.03
+    },
+    "branches": {
+      "total": 2450,
+      "covered": 1929,
+      "skipped": 0,
+      "pct": 78.73
+    },
+    "branchesTrue": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "external_checks": [
+    "Node zlib verifies standard framing, rejects mismatched output and Adler checksum",
+    "Python/Pillow PNG/GIF and manual legacy ASE corpus; exported GIF frame count/loop metadata verified by Pillow"
+  ],
+  "not_verified": [
+    "complete desktop-tool equivalence",
+    "Firefox and Safari",
+    "full WCAG AA audit",
+    "formal hostile-file security audit",
+    "performance targets"
+  ],
+  "platform": {
+    "node": "24.14.1",
+    "python": "3.9.25",
+    "machine": "x86_64"
+  }
+}

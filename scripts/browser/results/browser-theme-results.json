@@ -1,0 +1,66 @@
+{
+  "browser": "141.0.7390.37",
+  "tests": [
+    {
+      "name": "initial theme follows OS when no preference exists",
+      "passed": true
+    },
+    {
+      "name": "unspecified theme responds to OS changes",
+      "passed": true
+    },
+    {
+      "name": "dark toggle uses Lucide sun for its next action",
+      "passed": true
+    },
+    {
+      "name": "light toggle uses Lucide moon",
+      "passed": true
+    },
+    {
+      "name": "theme does not change artwork pixels or revision",
+      "passed": true
+    },
+    {
+      "name": "Lucide/tool dimensions remain identical",
+      "passed": true
+    },
+    {
+      "name": "light chrome switches native color scheme and readable text colors",
+      "passed": true
+    },
+    {
+      "name": "explicit light preference ignores OS changes",
+      "passed": true
+    },
+    {
+      "name": "explicit theme persists after reload",
+      "passed": true
+    },
+    {
+      "name": "light topbar remains contained at 1024px",
+      "passed": true
+    },
+    {
+      "name": "light topbar remains contained at 1280px",
+      "passed": true
+    },
+    {
+      "name": "light topbar remains contained at 1440px",
+      "passed": true
+    },
+    {
+      "name": "light topbar remains contained at 1920px",
+      "passed": true
+    },
+    {
+      "name": "dark preference also persists",
+      "passed": true
+    },
+    {
+      "name": "no theme runtime errors",
+      "passed": true
+    }
+  ],
+  "errors": []
+}

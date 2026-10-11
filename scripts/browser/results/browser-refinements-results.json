@@ -1,0 +1,55 @@
+{
+  "browser": "141.0.7390.37",
+  "input": "CDP simulated pen only",
+  "tests": [
+    {
+      "name": "source pattern phase follows captured canvas origin",
+      "passed": true
+    },
+    {
+      "name": "destination pattern phase starts at each stroke",
+      "passed": true
+    },
+    {
+      "name": "alignment and capture origin survive brush export",
+      "passed": true
+    },
+    {
+      "name": "gradient sensor can be independent of size/opacity sensor",
+      "passed": true
+    },
+    {
+      "name": "simulated pressure drives visible ramp colors",
+      "passed": true
+    },
+    {
+      "name": "pixel-vote preview leaves committed artwork unchanged",
+      "passed": true
+    },
+    {
+      "name": "pixel-vote Escape cancels",
+      "passed": true
+    },
+    {
+      "name": "pixel-vote Apply transforms artwork",
+      "passed": true
+    },
+    {
+      "name": "pixel-vote transform undoes exactly",
+      "passed": true
+    },
+    {
+      "name": "pattern mode reloads in preset data",
+      "passed": true
+    },
+    {
+      "name": "gradient dynamics reload",
+      "passed": true
+    },
+    {
+      "name": "no runtime or console errors",
+      "passed": true
+    }
+  ],
+  "errors": []
+}
