@@ -7,7 +7,7 @@ export function installSuiteCraft(env:{run:(name:string)=>void;recovery:()=>void
   const brand=q('.brand');brand.className='brand suite-brand';brand.replaceChildren();
   const image=document.createElement('img');image.src=logo;image.alt='';brand.append(image,'PiVo Craft');
   q('.badge').hidden=true;q('.filename').hidden=true;q('.topbar .spacer').remove();
-  const take=(id:string,label?:string)=>{const b=q<HTMLButtonElement>(`[data-action="${id}"]`);if(label)b.textContent=label;return b;};
+  const take=(id:string,label?:string)=>{const b=q<HTMLButtonElement>(`[data-action="${id}"]`);if(label){b.textContent=label;b.setAttribute('aria-label',label);b.removeAttribute('title');}return b;};
   const nav=document.createElement('nav');nav.className='suite-menus';nav.setAttribute('aria-label','Application menus');
   const undo=action('Undo',()=>env.run('undo')),redo=action('Redo',()=>env.run('redo'));undo.dataset.suiteCommand='undo';redo.dataset.suiteCommand='redo';
   nav.append(menu('File',[take('new','New project…'),take('open','Open project…'),action('Save project',()=>env.run('save')),action('Export…',()=>env.run('export')),action('Recovery…',env.recovery)]),
@@ -26,7 +26,9 @@ export function installSuiteCraft(env:{run:(name:string)=>void;recovery:()=>void
   for(const id of ['brush-opacity','ink','filled','pixelperfect','symmetry','wrap','grid'])brushPopup.append(q('#'+id).closest('label')!);options.insertBefore(brushDetails,q('[data-action=fit]'));
   const frameDetails=document.createElement('details');frameDetails.className='suite-menu';frameDetails.innerHTML='<summary>Frame options</summary><div class="suite-menu-popup"></div>';const framePopup=frameDetails.lastElementChild!;
   for(const id of ['frame-empty','frame-remove','link','unlink','tag'])framePopup.append(q('[data-action='+id+']'));for(const id of ['onion','show-preview','tags'])framePopup.append(q('#'+id).closest('label')??q('#'+id));framePopup.append(q('#duration').closest('label')!);q('.timelinebar').append(frameDetails);
-  const viewDetails=document.createElement('details');viewDetails.className='suite-menu';viewDetails.innerHTML='<summary>View options</summary><div class="suite-menu-popup"></div>';viewDetails.lastElementChild!.append(q('[data-action=fit]'),q('#zoom').closest('label')!,q('#zoom-label'));options.append(viewDetails);
+  const viewDetails=document.createElement('details');viewDetails.className='suite-menu';viewDetails.innerHTML='<summary>View options</summary><div class="suite-menu-popup"></div>';
+  const zoomRow=document.createElement('div');zoomRow.className='craft-zoom-row';zoomRow.append(q('#zoom').closest('label')!,q('#zoom-label'));
+  viewDetails.lastElementChild!.append(q('[data-action=fit]'),zoomRow);options.append(viewDetails);
   installDisclosureMenus();
 
   const dock=q('.right-dock');dock.id='suite-craft-dock';dock.classList.add('suite-dock');installDockToggle(toggle,dock);

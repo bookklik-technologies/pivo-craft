@@ -1,6 +1,6 @@
 /** Framework-free suite behavior; each application ships its own copy. */
 export function positionPopup(anchor:HTMLElement,popup:HTMLElement):void {
-  popup.style.position='fixed';popup.style.maxHeight=Math.max(80,innerHeight-16)+'px';popup.style.overflowY='auto';
+  popup.style.position='fixed';popup.style.right='auto';popup.style.bottom='auto';popup.style.maxHeight=Math.max(80,innerHeight-16)+'px';popup.style.overflowY='auto';
   const r=anchor.getBoundingClientRect();
   popup.style.left=Math.max(8,Math.min(r.left,innerWidth-popup.offsetWidth-8))+'px';
   popup.style.top=Math.max(8,Math.min(r.bottom+4,innerHeight-popup.offsetHeight-8))+'px';

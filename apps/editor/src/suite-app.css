@@ -22,3 +22,15 @@
 .tools{padding-block:8px}
 dialog.suite-export-dialog{padding:0;border-radius:8px}
 .suite-export-dialog .form-grid{gap:12px}
+
+/* Keep checkboxes beside their text in panels and settings menus. */
+.row label:has(input[type=checkbox]),
+.options .suite-menu-popup label:has(input[type=checkbox]),
+.timelinebar .suite-menu-popup label:has(input[type=checkbox]) {
+  display:flex;align-items:center;justify-content:flex-start;gap:8px;white-space:normal;
+}
+.row label input[type=checkbox],.suite-menu-popup input[type=checkbox] {margin:0;flex-shrink:0}
+.options .suite-menu-popup label:has(input[type=checkbox]) {cursor:pointer}
+.craft-zoom-row {display:flex;align-items:center;gap:8px;padding:4px 8px;min-height:32px}
+.options .craft-zoom-row label {flex:1;min-width:0;padding:0}
+.craft-zoom-row #zoom-label {min-width:5ch;text-align:right;font-variant-numeric:tabular-nums;font-size:12px}
