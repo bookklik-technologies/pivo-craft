@@ -1,0 +1,37 @@
+{
+  "browser": "141.0.7390.37",
+  "viewport": "1440x900",
+  "images": [
+    "face-01-new.png",
+    "face-02-shape.png",
+    "face-03-details.png",
+    "face-04-finished.png",
+    "blink-01-original.png",
+    "blink-02-copy.png",
+    "blink-03-eyes.png",
+    "blink-04-preview.png",
+    "export-01-save.png",
+    "export-02-reopened.png",
+    "export-03-png.png",
+    "export-04-gif.png"
+  ],
+  "downloads": [
+    "pixel-face.pvc",
+    "blinking-face.pvc",
+    "finished-face.pvc",
+    "pixel-face.png",
+    "blinking-face.gif"
+  ],
+  "errors": [],
+  "project": "Pixel Face",
+  "frames": 2,
+  "durationsMs": [
+    800,
+    200
+  ],
+  "checkpointsReopened": [
+    "pixel-face.pvc",
+    "blinking-face.pvc",
+    "finished-face.pvc"
+  ]
+}

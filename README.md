@@ -27,7 +27,22 @@ node scripts/browser/browser-workspace.mjs  # tabs, recovery slots, docks and sh
 
 Each script writes its `*-results.json` evidence to `scripts/browser/results/` (the remaining scripts cover density, font, icons, scrollbars, theme and typography).
 
-A standalone offline-capable HTML build is also provided as dist/standalone.html. File downloads work without a backend. Browser file origins or embedded previews may restrict IndexedDB; use normal hosted/localhost operation for reliable recovery. Download or open the standalone file in a desktop browser for full-size use. No remote deployment has been performed.
+A standalone offline-capable HTML file is provided in release packages as `dist/standalone.html`. The separate `package-release.py` release-packaging script generates it from a production build and existing verification artifacts; `npm run build` does not generate it. File downloads work without a backend. Browser file origins or embedded previews may restrict IndexedDB; use normal hosted/localhost operation for reliable recovery. Download or open the supplied standalone file in a desktop browser for full-size use. No remote deployment has been performed.
+
+## Documentation
+
+After `npm ci`, run these commands from the app's repository root:
+
+```sh
+npm run docs:dev      # start the VitePress documentation server
+npm run docs:build    # generate the static documentation site
+npm run docs:preview  # preview the built documentation site
+npm run docs:capture  # recreate tutorial screenshots and downloadable checkpoints
+```
+
+Open the local URL printed by VitePress. The documentation build is written to `docs/.vitepress/dist`; run `docs:build` before `docs:preview`. The application build remains in `dist/`.
+
+The [beginner tutorials](docs/tutorials/index.md) cover one project through three lessons, with real screenshots and editable native-project checkpoints. `docs:capture` starts a temporary local Vite server, uses a fresh Chromium session, writes assets to `docs/public/tutorials/`, and closes the browser/server afterward. It uses an installed Playwright Chromium browser (or installed Chrome); if neither is present, install Chromium with `npx playwright install chromium` first.
 
 ## Implemented UI
 

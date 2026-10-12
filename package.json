@@ -13,7 +13,11 @@
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
     "test:browser": "node scripts/browser/browser-smoke.mjs && node scripts/browser/browser-m4.mjs && node scripts/browser/browser-refinements.mjs && node scripts/browser/browser-codecs.mjs && node scripts/browser/browser-workspace.mjs && node scripts/browser/browser-density.mjs && node scripts/browser/browser-font.mjs && node scripts/browser/browser-icons.mjs && node scripts/browser/browser-scrollbars.mjs && node scripts/browser/browser-theme.mjs && node scripts/browser/browser-typography.mjs",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs",
+    "docs:capture": "node scripts/capture-tutorials.mjs"
   },
   "dependencies": {
     "@fontsource-variable/outfit": "5.3.0",
@@ -28,6 +32,7 @@
     "typescript": "5.9.3",
     "vite": "6.4.1",
     "vite-plugin-pwa": "^2.0.0",
+    "vitepress": "^1.6.4",
     "vitest": "3.2.4"
   }
 }
