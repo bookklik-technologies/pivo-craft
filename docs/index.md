@@ -1,5 +1,8 @@
 ---
 layout: home
+titleTemplate: false
+title: PiVo Craft Documentation
+description: Tutorials, guides, file formats, and API reference for PiVo Craft. Learn to draw pixel art, animate frames, and export your artwork.
 
 hero:
   name: "PiVo Craft"

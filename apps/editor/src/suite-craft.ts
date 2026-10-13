@@ -14,6 +14,7 @@ export function installSuiteCraft(env:{run:(name:string)=>void;recovery:()=>void
     menu('Edit',[undo,redo,action('Rename layer…',()=>q('.layer.selected .name')?.dispatchEvent(new MouseEvent('dblclick',{bubbles:true})))]),
     menu('View',[take('layout','Workspace layout…'),action('Toggle panels',()=>q<HTMLButtonElement>('.suite-dock-toggle').click()),action('Fit artwork',()=>env.run('fit')),action('Left panels',()=>{q('.right-dock').classList.remove('suite-dock-open');q('.left-dock').classList.toggle('suite-dock-open');}),action('System appearance',env.system)]),
     menu('Help',[take('shortcuts','Keyboard shortcuts…'),take('help','About PiVo Craft')]) );
+  const docsLink=document.createElement('a');docsLink.href='./docs/';docsLink.target='_blank';docsLink.rel='noopener';docsLink.textContent='Docs';nav.append(docsLink);
   brand.after(nav);
   const actions=document.createElement('div');actions.className='suite-header-actions';
   for(const id of ['undo','redo','save','export']){const b=take(id);if(id==='save'||id==='export'){b.classList.add('suite-file-action');const label=b.querySelector('.button-label');label?.classList.add('suite-action-label');}actions.append(b);}actions.append(q('#theme-toggle'));header.append(actions);
