@@ -6,3 +6,5 @@ export function installThemeToggle(onChange:()=>void){refresh=onChange;const but
 export function viewColors(){return VIEW_COLORS[current];}
 export function editorTheme(){return current;}
 export function useSystemTheme(){explicit=false;try{localStorage.removeItem('pivo-craft-theme-v1');}catch{}current=resolveTheme(null,preference.matches);apply();refresh?.();}
+
+export function setEditorTheme(theme:EditorTheme){current=theme;explicit=true;try{localStorage.setItem('pivo-craft-theme-v1',theme);}catch{}apply();refresh?.();}

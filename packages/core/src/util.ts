@@ -45,6 +45,10 @@ export function projectBytes(p: Project): number {
   }
   total += (p.frames.length + p.layers.length + p.cels.length + p.tags.length +
     p.slices.length + p.tilemaps.length + p.paletteKeys.length + p.palette.length) * 48;
+  for (const map of p.tilemaps) total += map.cells.length * 32;
+  for (const key of p.paletteKeys) total += key.colors.length * 8;
+  for (const layer of p.layers) total += layer.name.length * 2;
+  total += p.name.length * 2;
   return total;
 }
 

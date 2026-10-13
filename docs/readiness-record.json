@@ -1,0 +1,59 @@
+{
+  "baseCommit": "7bd86079e7f1773a231ad76147f03713c3680ce4",
+  "verificationTarget": "Validated source snapshot identified by workingTreeSha256; validation preceded the commit containing this record.",
+  "version": "0.5.7",
+  "unitTests": {
+    "passed": 256,
+    "failed": 0,
+    "authorization": "explicit user approval for this implementation",
+    "scope": "Prior production-readiness implementation; units were not rerun for subsequent worker, header, menu/About or shortcut/backdrop follow-ups."
+  },
+  "browserResults": {
+    "chromium": {
+      "passed": 15,
+      "failed": 0
+    },
+    "firefox": {
+      "passed": 15,
+      "failed": 0
+    },
+    "webkit": {
+      "passed": 15,
+      "failed": 0
+    }
+  },
+  "standalone": "Native backup, About documentation URL, shortcut reference and common backdrop passed in Chromium, Firefox and WebKit",
+  "independentOutputChecks": 3,
+  "applicationBuild": "passed",
+  "documentationBuild": "passed",
+  "sharedCopies": "verified",
+  "workingTreeSha256": "86ffb501dad1962abde62cc77a0893d5bb995092aae50dd2fae3d78976777f8f",
+  "deployedWorkerUpgrade": {
+    "passed": 3,
+    "failed": 0,
+    "origin": "https://bookklik-technologies.github.io/pivo-craft/",
+    "serviceWorkerSha256": "a91d33485d3494fb0610bdeee4b798a601dca780d6315c4a208005fcfc8c9396"
+  },
+  "dependencies": {
+    "blocking": 0,
+    "buildOnlyAdvisories": 3,
+    "exception": "VitePress nested development-server path; static documentation build only"
+  },
+  "verificationDate": "2026-10-13",
+  "developmentWorkerChecks": {
+    "passed": 3,
+    "failed": 0,
+    "coverage": "Vite dev autosave and native save/open in Chromium, Firefox and WebKit; Craft also checks identical error suppression."
+  },
+  "sharedSuiteVersion": "1.3.0",
+  "menuAboutChecks": {
+    "passed": 12,
+    "failed": 0,
+    "coverage": "Shared menus, light/dark desktop/compact presentation, keyboard navigation/focus, documentation inside About; Ortho also covers missing graphics."
+  },
+  "shortcutBackdropChecks": {
+    "passed": 15,
+    "failed": 0,
+    "coverage": "Shortcut layout, readable Ctrl/Cmd labels, compact/desktop light/dark layouts, fixed header/footer, scrolling, focus, unobstructed Close actions and common About/export/shortcut backdrops in Chromium, Firefox and WebKit; Craft also covers binding validation/apply/cancel/import/export/reset."
+  }
+}

@@ -2,7 +2,7 @@
 // Snapshot strategy: bounded by estimated byte cost (default 128 MiB per spec 10.2).
 // Each entry: {label, project snapshot}. Oldest complete transactions evicted; never half of one.
 import type { Project } from './types.ts';
-import { cloneProject, projectBytes } from './document.ts';
+import { cloneProject, projectBytes, validateProject } from './document.ts';
 
 export interface HistoryEntry {
   label: string;
@@ -20,7 +20,7 @@ export class History {
   private branches: Map<string, HistoryEntry[]> = new Map();
   private activeBranch = 'main';
 
-  constructor(p: Project, maxBytes = 134217728) {
+  constructor(p: Project, maxBytes = 134217728, private validate: (p: Project) => void = validateProject) {
     this.origin = cloneProject(p, {preserveImageIds:true}); // private snapshot: cancel() never aliases the caller's live object
     this.current = p;
     this.maxBytes = maxBytes;
@@ -48,6 +48,7 @@ export class History {
     const before = cloneProject(this.current, {preserveImageIds:true});
     try {
       fn(this.current);
+      this.validate(this.current);
     } catch (err) {
       // Roll the live project back to the pre-state; no entry is pushed.
       this.current = before;
@@ -56,6 +57,7 @@ export class History {
     this.current.revision++;
     const bytes = projectBytes(this.current) + projectBytes(before);
     this.entries.push({ label, project: before, bytes });
+    this.totalBytes -= this.redoStack.reduce((total, entry) => total + entry.bytes, 0);
     this.totalBytes += bytes;
     this.redoStack = []; // linear history: new edit clears redo
     this.evictIfNeeded();
@@ -107,6 +109,8 @@ export class History {
       this.totalBytes -= removed.bytes;
     }
   }
+
+  get retainedBytes(): number { return this.totalBytes; }
 
   // -------------------------------------------------------------------------
   // Branching history (optional M7 surface)

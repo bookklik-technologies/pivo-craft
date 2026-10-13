@@ -1,7 +1,8 @@
+declare const __STANDALONE__:boolean;
 import logo from '../../../logo.svg?url';
-import {action,menu,resize,tabKeys,installDisclosureMenus,installDockToggle} from './suite';
+import {action,menu,separator,installAppMenuNavigation,resize,tabKeys,installDisclosureMenus,installDockToggle} from './suite';
 
-export function installSuiteCraft(env:{run:(name:string)=>void;recovery:()=>void;system:()=>void}):void {
+export function installSuiteCraft(env:{run:(name:string)=>void;recovery:()=>void;system:()=>void;appearance:(theme:'light'|'dark')=>void}):void {
   const q=<T extends HTMLElement=HTMLElement>(s:string)=>document.querySelector<T>(s)!;
   const header=q('.topbar');header.classList.add('suite-header');
   const brand=q('.brand');brand.className='brand suite-brand';brand.replaceChildren();
@@ -10,11 +11,12 @@ export function installSuiteCraft(env:{run:(name:string)=>void;recovery:()=>void
   const take=(id:string,label?:string)=>{const b=q<HTMLButtonElement>(`[data-action="${id}"]`);if(label){b.textContent=label;b.setAttribute('aria-label',label);b.removeAttribute('title');}return b;};
   const nav=document.createElement('nav');nav.className='suite-menus';nav.setAttribute('aria-label','Application menus');
   const undo=action('Undo',()=>env.run('undo')),redo=action('Redo',()=>env.run('redo'));undo.dataset.suiteCommand='undo';redo.dataset.suiteCommand='redo';
+  const light=action('Light appearance',()=>env.appearance('light')),dark=action('Dark appearance',()=>env.appearance('dark'));light.dataset.suiteTheme='light';dark.dataset.suiteTheme='dark';
   nav.append(menu('File',[take('new','New project…'),take('open','Open project…'),action('Save project',()=>env.run('save')),action('Export…',()=>env.run('export')),action('Recovery…',env.recovery)]),
-    menu('Edit',[undo,redo,action('Rename layer…',()=>q('.layer.selected .name')?.dispatchEvent(new MouseEvent('dblclick',{bubbles:true})))]),
-    menu('View',[take('layout','Workspace layout…'),action('Toggle panels',()=>q<HTMLButtonElement>('.suite-dock-toggle').click()),action('Fit artwork',()=>env.run('fit')),action('Left panels',()=>{q('.right-dock').classList.remove('suite-dock-open');q('.left-dock').classList.toggle('suite-dock-open');}),action('System appearance',env.system)]),
+    menu('Edit',[undo,redo,separator(),action('Rename layer…',()=>q('.layer.selected .name')?.dispatchEvent(new MouseEvent('dblclick',{bubbles:true})))]),
+    menu('View',[action('Toggle panels',()=>q<HTMLButtonElement>('.suite-dock-toggle').click()),action('System appearance',env.system),light,dark,separator(),take('layout','Workspace layout…'),action('Fit artwork',()=>env.run('fit')),action('Left panels',()=>{q('.right-dock').classList.remove('suite-dock-open');q('.left-dock').classList.toggle('suite-dock-open');})]),
     menu('Help',[take('shortcuts','Keyboard shortcuts…'),take('help','About PiVo Craft')]) );
-  const docsLink=document.createElement('a');docsLink.href='./docs/';docsLink.target='_blank';docsLink.rel='noopener';docsLink.textContent='Docs';nav.append(docsLink);
+  installAppMenuNavigation(nav);
   brand.after(nav);
   const actions=document.createElement('div');actions.className='suite-header-actions';
   for(const id of ['undo','redo','save','export']){const b=take(id);if(id==='save'||id==='export'){b.classList.add('suite-file-action');const label=b.querySelector('.button-label');label?.classList.add('suite-action-label');}actions.append(b);}actions.append(q('#theme-toggle'));header.append(actions);

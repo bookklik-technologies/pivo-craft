@@ -1,38 +1,52 @@
 {
   "name": "pivo-craft",
   "description": "A local-first browser pixel-art and animation editor.",
-  "version": "0.5.6",
+  "version": "0.5.7",
   "license": "MIT",
   "author": "a-hakim",
   "private": true,
   "type": "module",
-  "packageManager": "pnpm@10.30.3",
+  "packageManager": "npm@11.19.0",
   "scripts": {
     "dev": "vite --host 0.0.0.0",
     "build": "tsc --noEmit && vite build",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
-    "test:browser": "node scripts/browser/browser-smoke.mjs && node scripts/browser/browser-m4.mjs && node scripts/browser/browser-refinements.mjs && node scripts/browser/browser-codecs.mjs && node scripts/browser/browser-workspace.mjs && node scripts/browser/browser-density.mjs && node scripts/browser/browser-font.mjs && node scripts/browser/browser-icons.mjs && node scripts/browser/browser-scrollbars.mjs && node scripts/browser/browser-theme.mjs && node scripts/browser/browser-typography.mjs",
+    "test:browser": "node scripts/browser-readiness.mjs",
     "typecheck": "tsc --noEmit",
-    "docs:dev": "vitepress dev docs",
+    "docs:dev": "npm run docs:build && node scripts/preview-docs.mjs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
-    "docs:capture": "node scripts/capture-tutorials.mjs"
+    "docs:capture": "node scripts/capture-tutorials.mjs",
+    "check:suite": "node scripts/check-suite.mjs",
+    "build:standalone": "node scripts/build-standalone.mjs",
+    "check:dependencies": "node scripts/audit-dependencies.mjs",
+    "test:release": "node scripts/browser-readiness.mjs",
+    "test:browser:legacy": "node scripts/browser/browser-smoke.mjs && node scripts/browser/browser-m4.mjs && node scripts/browser/browser-refinements.mjs && node scripts/browser/browser-codecs.mjs && node scripts/browser/browser-workspace.mjs && node scripts/browser/browser-density.mjs && node scripts/browser/browser-font.mjs && node scripts/browser/browser-icons.mjs && node scripts/browser/browser-scrollbars.mjs && node scripts/browser/browser-theme.mjs && node scripts/browser/browser-typography.mjs",
+    "capture:predecessor": "node scripts/capture-predecessor.mjs",
+    "test:upgrade": "node scripts/browser-upgrade.mjs",
+    "test:standalone": "node scripts/browser-standalone.mjs",
+    "test:workers": "node scripts/browser-workers.mjs",
+    "test:menus": "node scripts/browser-menus.mjs"
   },
   "dependencies": {
     "@fontsource-variable/outfit": "5.3.0",
-    "fflate": "0.8.2",
+    "fflate": "0.8.3",
     "gifenc": "1.0.3",
     "lucide": "1.54.0"
   },
   "devDependencies": {
-    "@playwright/test": "1.56.1",
+    "@playwright/test": "1.64.0",
     "@types/node": "^24.19.1",
-    "@vitest/coverage-v8": "3.2.4",
+    "@vitest/coverage-v8": "5.0.4",
     "typescript": "5.9.3",
-    "vite": "6.4.1",
+    "vite": "7.3.7",
     "vite-plugin-pwa": "^2.0.0",
     "vitepress": "^1.6.4",
-    "vitest": "3.2.4"
+    "vitest": "5.0.4"
+  },
+  "engines": {
+    "node": "24.x",
+    "npm": "11.x"
   }
 }

@@ -12,3 +12,7 @@ browser-pattern.pxbrush
 browser-custom.pxbrush
 browser-shortcuts.pxkeys
 screenshot-*.png
+
+dist-standalone/
+playwright-report/
+test-results/

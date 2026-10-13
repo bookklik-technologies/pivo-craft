@@ -54,3 +54,7 @@ Each script writes `*-results.json` evidence to `scripts/browser/results/` (furt
 - Follow the [User guide](/guide) for a walkthrough of the workspace.
 - Read [File formats](/formats) to understand `.pvc`, PNG, GIF and ASE support.
 - Drive the document model directly with the [Headless API](/api).
+
+## Release validation and updates
+
+Production browser checks use `npm run test:release` against the built app at its deployment subpath. Unit tests are manually authorized. See [production readiness](production-readiness.md) for current evidence and limitations. Updates show a prompt and require recovery to be stored before reload. Download native project backups regularly; browser site data can be cleared by the browser or user.

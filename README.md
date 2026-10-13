@@ -31,3 +31,7 @@ See the [tutorials](https://bookklik-technologies.github.io/pivo-craft/docs/tuto
 ## License
 
 Released under the [MIT License](LICENSE). Dependency license texts are included in [docs/third-party](docs/third-party/).
+
+## Production readiness
+
+See [readiness findings and release procedure](docs/production-readiness.md). Unit tests are manual; pull-request checks cover builds, dependency exceptions and browser workflows.
