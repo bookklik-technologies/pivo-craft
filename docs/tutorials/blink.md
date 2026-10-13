@@ -2,7 +2,7 @@
 
 Turn the face into a two-frame animation. The open-eye frame lasts 800 milliseconds; the closed-eye frame lasts 200 milliseconds.
 
-**Before you start:** Continue from [Draw your first pixel face](/tutorials/first-sprite), or download <a href="/tutorials/pixel-face.pvc" download>pixel-face.pvc</a> and open it through **File → Open project…**.
+**Before you start:** Continue from [Draw your first pixel face](/tutorials/first-sprite), or download <a href="./pixel-face.pvc" download>pixel-face.pvc</a> and open it through **File → Open project…**.
 
 **Time:** about 5–10 minutes. Screenshots show the dark desktop interface; click them for full size.
 
@@ -58,7 +58,7 @@ Select frame 2 and click **Save project**. Keep the download as **blinking-face.
 
 Two independent frames with an 800 ms open-eye pose and a 200 ms closed-eye pose.
 
-<a href="/tutorials/blinking-face.pvc" download>Download the finished project</a>.
+<a href="./blinking-face.pvc" download>Download the finished project</a>.
 
 ## If something looks different
 

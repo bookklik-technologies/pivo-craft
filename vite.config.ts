@@ -26,6 +26,7 @@ export default defineConfig({root:'apps/editor',base:'./',resolve:{alias:{'@pivo
   workbox:{
     globPatterns:['**/*.{js,css,html,svg,png,woff2,webmanifest}'],
     maximumFileSizeToCacheInBytes:10*1024*1024,
-    navigateFallback:'index.html'
+    navigateFallback: 'index.html',
+    navigateFallbackDenylist: [/\/docs(?:\/|$)/]
   }
 })]});

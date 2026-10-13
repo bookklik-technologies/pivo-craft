@@ -1,11 +1,14 @@
 import { defineConfig } from 'vitepress'
 
+const base = process.env.DOCS_BASE || '/'
+
 export default defineConfig({
+  base,
   lang: 'en-US',
   title: 'PiVo Craft',
   description:
     'A local-first browser pixel-art and animation editor. No account, no upload, no cloud.',
-  head: [['link', { rel: 'icon', type: 'image/svg+xml', href: '/icon.svg' }]],
+  head: [['link', { rel: 'icon', type: 'image/svg+xml', href: `${base}icon.svg` }]],
   themeConfig: {
     logo: '/logo.svg',
     nav: [

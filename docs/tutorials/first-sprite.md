@@ -58,7 +58,7 @@ Click **Save project**. Keep the downloaded `.pvc` file; you can name it **pixel
 
 A yellow face with dark eyes and a smile, on a transparent 16×16 canvas.
 
-<a href="/tutorials/pixel-face.pvc" download>Download the finished project</a>.
+<a href="./pixel-face.pvc" download>Download the finished project</a>.
 
 ## If something looks different
 

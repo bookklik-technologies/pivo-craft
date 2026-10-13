@@ -2,7 +2,7 @@
 
 Keep an editable project, verify it reopens, and export a still PNG and an animated GIF.
 
-**Before you start:** Continue from [Make the face blink](/tutorials/blink), or open <a href="/tutorials/blinking-face.pvc" download>blinking-face.pvc</a> through **File → Open project…**.
+**Before you start:** Continue from [Make the face blink](/tutorials/blink), or open <a href="./blinking-face.pvc" download>blinking-face.pvc</a> through **File → Open project…**.
 
 **Time:** about 5–10 minutes. Screenshots show the dark desktop interface; click them for full size.
 
@@ -58,7 +58,7 @@ Keep `.pvc` for future editing, `.png` for a still image, and `.gif` for playbac
 
 An editable `.pvc` backup, an open-eye PNG, and a blinking GIF.
 
-<a href="/tutorials/finished-face.pvc" download>Download the finished project</a>.
+<a href="./finished-face.pvc" download>Download the finished project</a>.
 
 - [Still PNG](/tutorials/pixel-face.png)
 - [Animated GIF](/tutorials/blinking-face.gif)

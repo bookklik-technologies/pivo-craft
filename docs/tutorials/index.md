@@ -6,9 +6,9 @@ Each lesson takes roughly 5–10 minutes and includes four screenshots from the 
 
 | Lesson | You will learn | Finished project |
 | --- | --- | --- |
-| [1. Draw your first pixel face](/tutorials/first-sprite) | A yellow face with dark eyes and a smile, on a transparent 16×16 canvas. | <a href="/tutorials/pixel-face.pvc" download>Download checkpoint</a> |
-| [2. Make the face blink](/tutorials/blink) | Two independent frames with an 800 ms open-eye pose and a 200 ms closed-eye pose. | <a href="/tutorials/blinking-face.pvc" download>Download checkpoint</a> |
-| [3. Save and export your artwork](/tutorials/save-export) | An editable `.pvc` backup, an open-eye PNG, and a blinking GIF. | <a href="/tutorials/finished-face.pvc" download>Download checkpoint</a> |
+| [1. Draw your first pixel face](/tutorials/first-sprite) | A yellow face with dark eyes and a smile, on a transparent 16×16 canvas. | <a href="./pixel-face.pvc" download>Download checkpoint</a> |
+| [2. Make the face blink](/tutorials/blink) | Two independent frames with an 800 ms open-eye pose and a 200 ms closed-eye pose. | <a href="./blinking-face.pvc" download>Download checkpoint</a> |
+| [3. Save and export your artwork](/tutorials/save-export) | An editable `.pvc` backup, an open-eye PNG, and a blinking GIF. | <a href="./finished-face.pvc" download>Download checkpoint</a> |
 
 ## Before you start
 
