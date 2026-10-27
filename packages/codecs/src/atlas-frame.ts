@@ -1,6 +1,6 @@
 // Shared frame compositor used by atlas + gif encoders (single source of truth).
-import type { Project, RGBA } from '@pivo-craft/core';
-import { renderFrame } from '@pivo-craft/core';
+import type { Project, RGBA } from '../../core/src/index.ts';
+import { renderFrame } from '../../core/src/index.ts';
 
 export function imageToRGBA(img: { width: number; height: number; mode: Project['mode']; data: Uint8Array }, palette: RGBA[], transparentIndex: number): Uint8Array {
   const n = img.width * img.height;

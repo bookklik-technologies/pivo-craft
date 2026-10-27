@@ -1,5 +1,7 @@
 # Headless API
 
+For installed package imports, supported headless operations and release steps, see the [npm SDK guide](npm.md). The source paths below describe internal implementation, not public package subpaths.
+
 API modules under `packages/core` and `packages/codecs` are usable headlessly in Node — no DOM required. The UI consumes the same compositor as atlas/GIF export.
 
 `packages/core` is also wired as the alias `@pivo-craft/core` (see `tsconfig.json` and `vite.config.ts`); code inside this repository typically imports via relative paths.

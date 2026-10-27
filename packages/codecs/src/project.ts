@@ -1,6 +1,6 @@
 // Shared Project helpers for codecs package (original work; core owns the model).
-import type { Project, ImageDataModel, Mode, Diagnostic } from '@pivo-craft/core';
-import { uid } from '@pivo-craft/core';
+import type { Project, ImageDataModel, Mode, Diagnostic } from '../../core/src/index.ts';
+import { uid } from '../../core/src/index.ts';
 
 export const MODE_BYTES: Record<Mode, number> = { rgba: 4, gray: 2, indexed: 1 };
 export const MODE_BITS: Record<Mode, number> = { rgba: 32, gray: 16, indexed: 8 };

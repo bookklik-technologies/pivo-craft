@@ -1,7 +1,7 @@
 // Atlas builder: trims, dedupes, and packs frames into a single RGBA buffer.
 // Packed layout is a shelf packer (rows sorted by height) — deterministic and dependency-free.
-import type { Project, AtlasOptions, AtlasResult, AtlasRecord, RGBA } from '@pivo-craft/core';
-import { uid, renderFrame } from '@pivo-craft/core';
+import type { Project, AtlasOptions, AtlasResult, AtlasRecord, RGBA } from '../../core/src/index.ts';
+import { uid, renderFrame } from '../../core/src/index.ts';
 import { imageHash, diag } from './project.ts';
 
 function clamp(v: number, lo: number, hi: number): number {

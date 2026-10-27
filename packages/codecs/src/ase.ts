@@ -16,8 +16,8 @@
 import type {
   Project, Layer, Cel, Frame, Tag, Slice, SliceKey, PaletteKey, TileSet, TileMap,
   ImageDataModel, Mode, RGBA, Direction, Diagnostic,
-} from '@pivo-craft/core';
-import { uid,validateProject,paletteFor } from '@pivo-craft/core';
+} from '../../core/src/index.ts';
+import { uid,validateProject,paletteFor } from '../../core/src/index.ts';
 import { ByteReader, ByteWriter, crc32 } from './bytes.ts';
 import { MODE_BITS, diag } from './project.ts';
 import { deflateSync, inflateReusable } from './zlib.ts';

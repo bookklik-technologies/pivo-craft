@@ -3,7 +3,7 @@
 // Typed-array data never enters JSON: it is referenced by id and stored as raw binary members,
 // so a native roundtrip preserves Uint8Array data exactly.
 import { zipSync, unzipSync, strFromU8, type Unzipped } from 'fflate';
-import type { Project } from '@pivo-craft/core';
+import type { Project } from '../../core/src/index.ts';
 import {crc32} from './bytes.ts';
 import { validateProjectShape, diag } from './project.ts';
 

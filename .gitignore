@@ -16,3 +16,5 @@ screenshot-*.png
 dist-standalone/
 playwright-report/
 test-results/
+lib/
+*.tgz
