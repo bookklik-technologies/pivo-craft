@@ -5,7 +5,7 @@
 After the first manual publication:
 
 ```sh
-npm install pivo-craft
+npm install @bookklik/pivo-craft
 ```
 
 Node.js 24 or newer. This is an ESM-only package with bundled public TypeScript declarations. CommonJS require and a CLI/--headless switch are not supported; headless means the programmatic SDK below. Use dynamic import from CommonJS if needed. Library consumers do not need Vite, TypeScript loaders, a browser or the editor source tree.
@@ -14,18 +14,18 @@ Node.js 24 or newer. This is an ESM-only package with bundled public TypeScript 
 
 | Import | API |
 | --- | --- |
-| `pivo-craft` | Combined portable core and IO |
-| `pivo-craft/headless` | Alias of the combined API |
-| `pivo-craft/core` | Data types, validation and editing |
-| `pivo-craft/io` | Portable serialization/encoding/export |
-| `pivo-craft/codecs` | Alias of portable IO |
+| `@bookklik/pivo-craft` | Combined portable core and IO |
+| `@bookklik/pivo-craft/headless` | Alias of the combined API |
+| `@bookklik/pivo-craft/core` | Data types, validation and editing |
+| `@bookklik/pivo-craft/io` | Portable serialization/encoding/export |
+| `@bookklik/pivo-craft/codecs` | Alias of portable IO |
 
 Only documented entries are public. Source paths, lib chunks and editor internals are not exported. Generated declarations are included for each entry. Browser download/storage helpers are not exported by the SDK.
 
 ## Example
 
 ```js
-import { createProject, renderFrame, encodePNG, saveNative } from 'pivo-craft/headless';
+import { createProject, renderFrame, encodePNG, saveNative } from '@bookklik/pivo-craft/headless';
 import { writeFile } from 'node:fs/promises';
 
 const project = createProject(32, 32, 'Sprite');

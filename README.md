@@ -8,7 +8,7 @@ A local-first browser pixel-art and animation editor.
 
 ## npm and headless SDK
 
-ESM library for Node.js 24+, with generated TypeScript declarations. After publication, install with `npm install pivo-craft` and import from `pivo-craft/headless`, `pivo-craft/core` or `pivo-craft/io`. No CLI or browser is required for the documented portable operations.
+ESM library for Node.js 24+, with generated TypeScript declarations. After publication, install with `npm install @bookklik/pivo-craft` and import from `@bookklik/pivo-craft/headless`, `@bookklik/pivo-craft/core` or `@bookklik/pivo-craft/io`. No CLI or browser is required for the documented portable operations.
 
 See [SDK usage, supported operations and manual publishing](docs/npm.md). Build with `npm run build:lib`; validate an isolated production install with `npm run check:consumer`. These commands do not run the unit suite.
 

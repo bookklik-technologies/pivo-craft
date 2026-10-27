@@ -1,5 +1,5 @@
 {
-  "name": "pivo-craft",
+  "name": "@bookklik/pivo-craft",
   "description": "A local-first browser pixel-art and animation editor.",
   "version": "0.6.0",
   "license": "MIT",
