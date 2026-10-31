@@ -2,6 +2,26 @@
 
 This release hardens the existing local-first editor. Artwork stays on the device; app assets load from the hosting origin. Browser recovery is separate from downloaded native projects.
 
+## Headerless browser embedding and recovery opt-out - 31 October 2026
+
+Load the full editor with `?embed=1` to hide the suite header, reclaim its layout space, and disable browser recovery. Document/mode tabs, toolbars, panels, canvas, timeline where applicable, and status UI remain mounted. The header DOM stays available internally for existing command wiring but is not visible or focusable. Use `?recovery=off` when the header should remain visible. See [browser embedding options](npm.md#browser-embedding-and-recovery-options).
+
+Disabled recovery performs no startup lookup, migration, automatic save, or recovery deletion; existing copies remain untouched. Embedded mode overrides an explicit recovery=on. Unsaved-change warnings stay active, and updates cannot reload unsaved documents without downloaded backups. Other browser preferences and PWA asset caching are unaffected. The headless SDK remains separate and never needs either URL flag.
+
+With the user's unit-test authorization, 287 unit tests pass for this project. Application/PWA, standalone, documentation, portable SDK/declaration builds, isolated Node/NodeNext consumers, and shared-suite manifests also pass. The new `npm run test:embed` passes eight Chromium cases per project (24 across the suite): normal, recovery-disabled, direct embedded, and actual iframe-hosted modes at 1280x800 and 640x480. Checks cover header visibility and spacing, visible editor canvases, native saving via Ctrl+S, no page errors, and no recovery IndexedDB or legacy recovery-key access while disabled. Desktop and compact screenshots were inspected. Firefox/WebKit and the full legacy browser matrix were not rerun for this feature. Existing dependency-release blockers documented below remain unchanged.
+
+## Hardening and embedding follow-up - 31 October 2026
+
+Standalone packaging and browser readiness scripts now derive the unscoped application name from the scoped npm name. This restores the documented standalone filename (and Craft's legacy standalone.html alias), PWA fallback exclusions, and app-specific browser validation branches. Standalone packaging and shared-suite manifest checks pass; browser assertions were not executed.
+
+The root/headless SDK now exposes an isolated `createHeadlessEditor` adapter for custom browser UIs and Node jobs. Seed documents, snapshots, and transaction drafts do not alias internal state. Mutations are synchronous, validated, atomic, and non-reentrant. See [embedding contracts and examples](npm.md#embed-with-a-custom-ui-or-no-ui). The adapter does not mount the editor or provide implicit persistence, rendering, workers, or undo history.
+
+Native saving validates a detached document and enforces manifest, entry, decoded-byte, and compressed-byte budgets. Native loading rejects duplicate/unsafe image references, checks binary member ownership, validates tile references, and runs the core model validator before adopting a project.
+
+All projects pin the build-tool dependencies glob 14.0.3 and minimatch 11.0.1, with regenerated lockfiles. The current npm audit reports zero moderate/high/critical findings, but still reports four low-severity findings from deepmerge 4.3.1 and its PWA-tooling chain. No patched deepmerge release was available from the registry during this work. The existing, narrowly scoped deepmerge exception is preserved unchanged and expires on 27 November 2026 at 00:00 UTC; check:dependencies passes with the accepted findings still visible. This exception was already present in the working tree before this follow-up. Runtime-only dependency audits are separate from this development-tool release gate.
+
+Validation for this follow-up uses application/PWA builds, documentation builds, portable library/declaration builds, package inventory checks, and isolated production-only Node/strict NodeNext consumer checks. The consumer checks exercise the embedding adapter without DOM globals. With explicit user permission on 31 October 2026, the full unit suite passed: 265 tests in 23 files, including the new hardening and embedding regressions. Historical browser counts below do not validate these changes; browser, standalone, worker, and real-device regressions remain release checks to complete. Nothing was committed, published, or deployed as part of this follow-up.
+
 ## Release gate
 
 This commit includes the readiness implementation and UI follow-ups. It has not been deployed; the source fingerprint below identifies the validated snapshot. For this implementation, explicit user permission authorized unit execution: all 256 tests passed. Future unit execution requires permission or manual workflow dispatch. Pushes to main automatically run the release workflow, which checks out one exact commit and runs builds, dependency checks and browser checks before publishing that same artifact. Unit validation runs only when the release workflow or Manual unit validation is manually dispatched. Push and pull-request workflows never execute unit tests.
@@ -24,9 +44,11 @@ File operations use bounded worker jobs; cancellation terminates the job without
 
 PWA updates wait for an explicit decision in each tab and a successful recovery flush. Editing is briefly locked during that flush and worker activation, so new edits cannot escape the stored snapshot. Accepting an update in another tab never forces this tab to reload. Active gestures, dialogs and exports defer updates. Application assets are cached; documentation is online-only. Standalone HTML and documentation routes are excluded from the app navigation fallback.
 
-## Dependency policy (updated 27 October 2026)
+## Dependency policy (updated 28 October 2026)
 
-The npm SDK release replaces the historical documentation-server exceptions with a zero-advisory gate. VitePress 1.6.4 uses an explicit nested Vite 6.4.5 override; fast-uri and serialize-javascript are pinned to patched transitive versions in the root overrides. Browser and documentation builds were checked with these resolutions. `npm run check:dependencies` rejects any reported advisory and runs npm without shell interpolation. See the [npm guide](npm.md) for package preparation and manual publication.
+VitePress 1.6.4 uses an explicit nested Vite 6.4.5 override; fast-uri and serialize-javascript are pinned to patched transitive versions in the root overrides. Browser and documentation builds were checked with these resolutions. `npm run check:dependencies` runs npm without shell interpolation and blocks every advisory except the temporary exception below. See the [npm guide](npm.md) for package preparation and manual publication.
+
+Until 27 November 2026 at 00:00 UTC, the gate accepts the low-severity advisory GHSA-gcqx-w48m-w2h4 for `deepmerge@4.3.1` and its inherited findings in `@rollup/plugin-node-resolve@16.0.3`, `workbox-build@7.4.1`, and `vite-plugin-pwa@2.0.0`. No patched deepmerge release is currently available. This accepts a build-time prototype-poisoning risk in the PWA tooling, not a runtime SDK dependency; only trusted build configuration should be used. The exception requires the exact locked versions, top-level install locations, advisory range, low severity, and dependency chain. Additional advisories, changed versions or paths, elevated severity, expired exceptions, and audit failures still block release. Accepted findings remain visible in the audit output. Remove this exception and update the affected dependency chain when a patched release becomes available; review the risk again before extending the deadline.
 
 ## Validation limits
 

@@ -3,7 +3,7 @@
 // Typed-array data never enters JSON: it is referenced by id and stored as raw binary members,
 // so a native roundtrip preserves Uint8Array data exactly.
 import { zipSync, unzipSync, strFromU8, type Unzipped } from 'fflate';
-import type { Project } from '../../core/src/index.ts';
+import { validateProject, type Project } from '../../core/src/index.ts';
 import {crc32} from './bytes.ts';
 import { validateProjectShape, diag } from './project.ts';
 
@@ -21,6 +21,8 @@ interface ProjectEnvelope {
 }
 
 export function saveNative(p: Project): Uint8Array {
+  p = validateProjectShape(structuredClone(p));
+  validateProject(p);
   const imageRefs: ProjectEnvelope['imageRefs'] = [];
   const images: Record<string, Uint8Array> = {};
   for (const [id, img] of Object.entries(p.images)) {
@@ -35,7 +37,13 @@ export function saveNative(p: Project): Uint8Array {
     [JSON_MEMBER]: new TextEncoder().encode(JSON.stringify(envelope)),
     ...images,
   };
-  return zipSync(members, { level: 6 });
+  const entries = Object.values(members);
+  if (entries.length > MAX_MEMBERS || members[JSON_MEMBER].length > 16 * 1024 * 1024 || entries.reduce((total, data) => total + data.length, 0) > MAX_UNCOMPRESSED) {
+    throw new Error('Project exceeds native archive budgets');
+  }
+  const bytes = zipSync(members, { level: 6 });
+  if (bytes.length > 128 * 1024 * 1024) throw new Error('Encoded ZIP exceeds 128MiB');
+  return bytes;
 }
 
 /** Structural pre-checks on the raw ZIP before any inflation: bounds every field we rely on. */
@@ -73,6 +81,7 @@ function preflightZip(bytes: Uint8Array): Map<string,{size:number;crc:number}> {
 }
 
 export function loadNative(bytes: Uint8Array): Project {
+  if (!(bytes instanceof Uint8Array)) throw new Error('Native project must be a Uint8Array');
   const directory=preflightZip(bytes);
 
   // unzipSync gives us per-member inflated data; fflate enforces member sizes against the
@@ -115,10 +124,11 @@ export function loadNative(bytes: Uint8Array): Project {
   // bounded validator before anything trusts the data.
   const images: Record<string, unknown> = {};
   for (const ref of env.imageRefs as Array<Record<string, unknown>>) {
+    if (!ref || typeof ref !== 'object' || Array.isArray(ref)) throw new Error('bad imageRef');
     const id = typeof ref.id === 'string' ? ref.id : '';
-    if (!id || id === '__proto__') throw new Error('bad imageRef id');
+    if (!/^[A-Za-z0-9_.:-]{1,128}$/.test(id) || ['__proto__', 'constructor', 'prototype'].includes(id) || Object.hasOwn(images, id)) throw new Error('bad or duplicate imageRef id');
     const member = typeof ref.member === 'string' ? ref.member : '';
-    const data = files[member];
+    const data = Object.hasOwn(files, member) && member.startsWith(IMAGES_PREFIX) ? files[member] : undefined;
     if (!data) throw new Error(`missing image member ${member}`);
     images[id] = {
       id,
@@ -130,9 +140,25 @@ export function loadNative(bytes: Uint8Array): Project {
   }
   const tileSetRefs=Array.isArray(env.tileSetRefs)?env.tileSetRefs:[];
   if(tileSetRefs.length>1024)throw new Error('Too many tilesets');
-  const tilesets=tileSetRefs.map((raw:any)=>{if(!Array.isArray(raw.tiles)||raw.tiles.length>65536)throw new Error('Invalid tileset');return {...raw,tiles:raw.tiles.map((t:any)=>{const data=files[t.member];if(!data)throw new Error('Missing tile member');return {...t,data};})};});
+  const tilesets = tileSetRefs.map((raw: unknown) => {
+    if (!raw || typeof raw !== 'object' || Array.isArray(raw)) throw new Error('Invalid tileset');
+    const tileset = raw as Record<string, unknown>;
+    if (!Array.isArray(tileset.tiles) || tileset.tiles.length > 65536) throw new Error('Invalid tileset');
+    return {
+      ...tileset,
+      tiles: tileset.tiles.map((rawTile: unknown) => {
+        if (!rawTile || typeof rawTile !== 'object' || Array.isArray(rawTile)) throw new Error('Invalid tile');
+        const tile = rawTile as Record<string, unknown>;
+        const member = typeof tile.member === 'string' ? tile.member : '';
+        if (!member.startsWith('tiles/') || !Object.hasOwn(files, member)) throw new Error('Missing tile member');
+        return { ...tile, data: files[member] };
+      }),
+    };
+  });
   const candidate = { ...(projectRaw as object), images, tilesets } as unknown;
-  return validateProjectShape(candidate);
+  const project = validateProjectShape(candidate);
+  validateProject(project);
+  return project;
 }
 
 /** Re-encode a Project to a normal envelope (useful for normalization/migration). */
